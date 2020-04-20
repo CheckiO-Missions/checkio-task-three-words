@@ -1,19 +1,15 @@
-"use strict";
+import assert from "assert";
 
-function threeWords(data) {
-    return true || false;
+function threeWords(text: string): boolean {
+    return false;
 }
 
-var assert = require('assert');
+console.log('Example:')
+console.log(threeWords("Hello World hello"))
 
-if (!global.is_checking) {
-    console.log('Example:')
-    console.log(threeWords("Hello World hello"))
-    
-    assert.equal(threeWords("Hello World hello"), true, "1st example");
-    assert.equal(threeWords("He is 123 man"), false, "2nd example");
-    assert.equal(threeWords("1 2 3 4"), false, "3rd example");
-    assert.equal(threeWords("bla bla bla bla"), true, "4th example");
-    assert.equal(threeWords("Hi"), false, "Letters");
-    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
-}
+assert.equal(threeWords("Hello World hello"), true);
+assert.equal(threeWords("He is 123 man"), false);
+assert.equal(threeWords("1 2 3 4"), false);
+assert.equal(threeWords("bla bla bla bla"), true);
+assert.equal(threeWords("Hi"), false);
+console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
