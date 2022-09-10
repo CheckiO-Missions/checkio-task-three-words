@@ -1,0 +1,181 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission
+    </div>
+    <div class="answer">
+        The general idea is to iterate over the splitted string and count only words
+        with letters.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, what instrument should I start with?
+    </div>
+    <div class="answer">
+        You need to get separate words from the string then iterate over them.
+        Use string <a href="http://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a> method
+        for the first task and <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for statement</a>
+        to create loop.
+        <br />
+        <br />
+        <pre class="brush: python">
+for w in words.split():
+    # do_something
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I need some help to proceed with the mission
+    </div>
+    <div class="answer">
+        To distinguish between words and numbers, use string methods
+        <a href="http://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a> and
+        <a href="http://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a>.
+        For this mission one method is enough. Let's use the first one. It returns
+        True if the string contains only letters. Also use Use
+        <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a>.
+        <br />
+        <br />
+        <pre class="brush: python">
+if w.isalpha():
+    # do_something_word
+else:
+    # do_something_number
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I am gone half way through. Need help!
+    </div>
+    <div class="answer">
+        You need to declare counter variable with 0 initial value before loop.
+        If isalpha() for current word is True, increase counter, if False
+        - you need to reset the counter, because you need to count only words in succession.
+        <br />
+        <br />
+        <pre class="brush: python">
+count = 0
+...
+if w.isalpha():
+    count += 1
+    ...
+else:
+    count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I am stuck. I need a small hint.
+    </div>
+    <div class="answer">
+        Since you need to make this checking with each word, until the counter gets
+        value 3 or no word remains, do above checking inside for loop.
+        <br />
+        <br />
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        ...
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do next?
+    </div>
+    <div class="answer">
+        If your counter is already equal 3, it means there are three words in succession
+        in the string and no need to proceed counting - just return True.
+    <br />
+    <br />
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        if count == 3:
+            return True
+    else:
+        count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer"> 
+        if there are no word remains to check (loop ends), it means the string does
+        not have three words in succession, so return False.
+        Wrap the whole code in function expression.
+    <br />
+    <br />
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    count = 0
+    for w in words.split():
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+            
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!
+    </div>
+    <div class="answer">
+        Sure, grab it!<br />
+        Using regular expression module and search pattern with three letter
+        sequences and whitespace between them.
+        <br />
+        <br />
+        <pre class="brush: python">
+import re
+
+
+def checkio(words):
+
+    return bool(re.search('\D+ \D+ \D+', words))
+        </pre>
+        Creating three lists of words: from the first, the second and the third.
+        Then zippind them together, join each three words in one without whitespace
+        and check if it is a word.
+        <br />
+        <br />
+        <pre class="brush: python">
+def checkio(words):
+
+    d = words.split()
+
+    return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
+        </pre>
+        Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it!
+    </div>
+</div>
+</body>

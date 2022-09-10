@@ -1,0 +1,180 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як розпочати розв'язування цієї місії.
+    </div>
+    <div class="answer">
+        Загалом, ідея у ітеруванні по розділеному на слова рядку і підрахунку тільки
+        тих слів, що містять лише літери.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То, з якого інструмента мені слід розпочати?
+    </div>
+    <div class="answer">
+        Тобі потрібно отримати окремі слова з рядка і тоді проходити ними.
+        Використай метод рядків <a href="http://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a>
+        для першої задачі і <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">вираз for</a>
+        для створення циклу.
+        <br />
+        <br />
+        <pre class="brush: python">
+for w in words.split():
+    # робити щось
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Мені потрібна деяка допомога із продовженням розв'язку.
+    </div>
+    <div class="answer">
+        Щоб розрізняти слова і числа, використовуй методи рядків
+        <a href="http://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a> і
+        <a href="http://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a>.
+        Для цієї місії одного із них достатньо. Давай використаємо перший. Він повертає
+        True якщо рядок містить лише літери. Також використай <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">вираз if</a>
+        <br />
+        <br />
+        <pre class="brush: python">
+if w.isalpha():
+    # робити щось, якщо слово
+else:
+    # робити щось, якщо число
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Я вже на середині шляху. Потрібна допомога!
+    </div>
+    <div class="answer">
+        Тобі потрібно оголосити змінну counter з початковим значенням 0 перед циклом.
+        Якщо isalpha() для поточного слова - True, збільшуй counter, якщо False
+        - тобі потрібно обнулити counter, тому що тобі потрібно рахувати тільки слова,
+        що йдуть підряд.
+        <br />
+        <br />
+        <pre class="brush: python">
+count = 0
+...
+if w.isalpha():
+    count += 1
+    ...
+else:
+    count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Я застряг. Потрібна маленька підказка.
+    </div>
+    <div class="answer">
+        Оскільки тобі потрібно робити цю перевірку з кожним словом, поки counter
+        не досягне значення 3 або не залишиться слів, роби цю перевірки всередині циклу.
+        <br />
+        <br />
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        ...
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Що робити далі?
+    </div>
+    <div class="answer">
+        Якщо counter вже дорівнює 3, це значить є три слова підряд у рядку і немає
+        потреби продовжувати підрахунок - просто поверни True.
+    <br />
+    <br />
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        if count == 3:
+            return True
+    else:
+        count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То як має виглядати моє остаточне рішення?
+    </div>
+    <div class="answer">
+        Якщо не залишилося слів для перевірки (цикл завершився), це значить рядок
+        не містить три слова підряд, тож повертай False.
+        Оберни весь код у вираз функції.
+    <br />
+    <br />
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    count = 0
+    for w in words.split():
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+            
+    return False
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розв'язків!<br />
+        Адже я хочу бути справжнім Python ніндзею!
+    </div>
+    <div class="answer">
+        Звісно, тримай!<br />
+        З використанням модуля регулярних виразів re і пошуком в рядку патерну
+        з трьома сукупностями літер і пробілів між ними.
+        <br />
+        <br />
+        <pre class="brush: python">
+import re
+
+
+def checkio(words):
+
+    return bool(re.search('\D+ \D+ \D+', words))
+        </pre>
+        Створено три списки слів: починаючи з першого, другого і третього.
+        Вони зібрані разом по індексу, кожні три слова з'єднані в одне без пробілів
+        і здійснюється перевірка, чи результат цього з'єднання є словом.
+        <br />
+        <br />
+        <pre class="brush: python">
+def checkio(words):
+
+    d = words.split()
+
+    return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
+        </pre>
+        Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>
