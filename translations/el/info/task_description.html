@@ -25,19 +25,8 @@
     <p>
         <strong>Παράδειγμα:</strong>
     </p>
-    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
-threeWords("Hello World hello") == True
-threeWords("He is 123 man") == False
-threeWords("1 2 3 4") == False
-threeWords("bla bla bla bla") == True
-threeWords("Hi") == False
-{% else %}
-checkio("Hello World hello") == True
-checkio("He is 123 man") == False
-checkio("1 2 3 4") == False
-checkio("bla bla bla bla") == True
-checkio("Hi") == False
-{% endif %}</pre>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
 </div>
 
 <p class="for_info_only">
