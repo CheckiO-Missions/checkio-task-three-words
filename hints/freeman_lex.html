@@ -156,7 +156,7 @@ def checkio(words: str) -> bool:
 import re
 
 
-def checkio(words):
+def checkio(words: str) -> bool:
 
     return bool(re.search('\D+ \D+ \D+', words))
         </pre>
@@ -164,7 +164,7 @@ def checkio(words):
             Creating three lists of words: from the first, the second and the third. Then zippind them together, join each three words in one without whitespace and check if it is a word.
         </p>
         <pre class="brush: python">
-def checkio(words):
+def checkio(words: str) -> bool:
 
     d = words.split()
 
