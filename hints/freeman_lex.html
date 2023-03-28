@@ -122,6 +122,7 @@ for w in words.split():
         <p>
             if there are no word remains to check (loop ends), it means the string does not have three words in succession, so return <b class="code">False</b>. Wrap the whole code in function expression.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(words: str) -> bool:
 
@@ -136,6 +137,7 @@ def checkio(words: str) -> bool:
             
     return False
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -152,6 +154,7 @@ def checkio(words: str) -> bool:
         <p>
             Using regular expression module and search pattern with three letter sequences and whitespace between them.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 import re
 
@@ -160,9 +163,11 @@ def checkio(words: str) -> bool:
 
     return bool(re.search('\D+ \D+ \D+', words))
         </pre>
+        </div>
         <p>
             Creating three lists of words: from the first, the second and the third. Then zippind them together, join each three words in one without whitespace and check if it is a word.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(words: str) -> bool:
 
@@ -170,6 +175,7 @@ def checkio(words: str) -> bool:
 
     return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
         </pre>
+        </div>
         <p><b>
             Click "Best solutions" at mission menu and see a lot of other
         interesting solutions!
