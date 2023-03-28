@@ -122,6 +122,7 @@ for w in words.split():
         <p>
             Якщо не залишилося слів для перевірки (цикл завершився), це значить рядок не містить три слова підряд, тож повертай <b class="code">False</b>. Оберни весь код у вираз функції.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(words: str) -> bool:
 
@@ -136,6 +137,7 @@ def checkio(words: str) -> bool:
             
     return False
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -152,6 +154,7 @@ def checkio(words: str) -> bool:
         <p>
             З використанням модуля регулярних виразів <b class="code">re</b> і пошуком в рядку патерну з трьома сукупностями літер і пробілів між ними.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 import re
 
@@ -160,9 +163,11 @@ def checkio(words: str) -> bool:
 
     return bool(re.search('\D+ \D+ \D+', words))
         </pre>
+        </div>
         <p>
             Створено три списки слів: починаючи з першого, другого і третього. Вони зібрані разом по індексу, кожні три слова з'єднані в одне без пробілів і здійснюється перевірка, чи результат цього з'єднання є словом.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(words: str) -> bool:
 
@@ -170,6 +175,7 @@ def checkio(words: str) -> bool:
 
     return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
         </pre>
+        </div>
         <p><b>
             Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!
         </b></p>
