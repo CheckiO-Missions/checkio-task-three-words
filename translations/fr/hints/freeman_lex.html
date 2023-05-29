@@ -1,0 +1,197 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je n'ai aucune idée de la manière de résoudre cette mission
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 L'idée générale est d'itérer sur la chaîne scindée et de ne compter que les mots
+        avec des lettres.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Par quel instrument dois-je commencer?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Vous devez obtenir des mots distincts à partir de la chaîne de caractères, puis les parcourir. Utilisez la méthode <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a> pour la première tâche et <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for statement</a> pour créer une boucle.
+        </p>
+        <pre class="brush: python">
+for w in words.split():
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            J'ai besoin d'aide pour poursuivre la mission.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Pour faire la distinction entre les mots et les chiffres, utilisez les méthodes de chaînes de caractères <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a> et <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a>. Pour cette mission, une seule méthode suffit. Utilisons la première. Elle renvoie <b class="code">True</b> si la chaîne ne contient que des lettres. Utilisez également <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a>.
+        </p>
+        <pre class="brush: python">
+if w.isalpha():
+    ...
+else:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je ne suis plus à la moitié du chemin. J'ai besoin d'aide!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Vous devez déclarer la variable <b class="code">counter</b> avec la valeur initiale <b class="code">0</b> avant la boucle. Si <b class="code">isalpha()</b> pour le mot actuel est <b class="code">True</b>, augmentez <b class="code">counter</b>, si <b class="code">False</b> - vous devez réinitialiser le compteur, car vous ne devez compter que les mots successifs.
+        </p>
+        <pre class="brush: python">
+count = 0
+...
+if w.isalpha():
+    count += 1
+    ...
+else:
+    count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je suis bloqué. J'ai besoin d'un petit conseil.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Puisque vous devez faire cette vérification à chaque mot, jusqu'à ce que <b class="code">counter</b> obtienne la valeur <b class="code">3</b> ou qu'il ne reste plus aucun mot, faites la vérification ci-dessus à l'intérieur d'une boucle for.
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        ...
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Que faire ensuite?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Si votre <b class="code">counter</b> est déjà égal à <b class="code">3</b>, cela signifie qu'il y a trois mots successifs dans la chaîne et qu'il n'est pas nécessaire de continuer à compter - renvoyez simplement <b class="code">True</b>.
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        if count == 3:
+            return True
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Alors, à quoi devrait ressembler ma solution finale?
+        </p>
+    </div>
+    <div class="answer"> 
+        <p>
+            s'il ne reste aucun mot à vérifier (la boucle se termine), cela signifie que la chaîne ne contient pas trois mots à la suite, donc retournez <b class="code">False</b>. Enveloppez tout le code dans une expression de fonction.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    count = 0
+    for w in words.split():
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+            
+    return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Montrez-moi d'autres solutions!<br />
+            parce que je veux être une vraie 🥇 Python Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Bien sûr, prenez-le!
+        </p>
+        <p>
+            Utilisation du module d'expressions régulières et d'un modèle de recherche avec des séquences de trois lettres et des espaces entre elles.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(words: str) -> bool:
+
+    return bool(re.search('\D+ \D+ \D+', words))
+        </pre>
+        </div>
+        <p>
+            Création de trois listes de mots: la première, la deuxième et la troisième. Puis, en les reliant par zippage, vous réunissez les trois mots en un seul sans espace et vérifiez s'il s'agit bien d'un mot.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    d = words.split()
+
+    return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
+        </pre>
+        </div>
+        <p><b>
+            Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!
+        </b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Merci beaucoup! Je comprends mieux maintenant! Tout fonctionne bien!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Heureux de l'apprendre!
+        </p>
+    </div>
+</div>
+</body>
