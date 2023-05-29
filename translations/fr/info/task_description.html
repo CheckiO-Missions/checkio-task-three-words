@@ -1,41 +1,41 @@
 <img class="for_info_only" title="train" src="{{MEDIA}}train.png" alt="train" />
 
 <p>
-    On va apprendre aux Robots &agrave; distinguer les mots et les nombres.
+    Apprenons aux robots à distinguer les mots et les chiffres.
 </p>
 
 <p>
-    On vous donne une chaine de caract&egrave;res avec des mots et des nombres s&eacute;par&eacute;s par des caract&egrave;res blancs (un espace).
-    Les mots contiennent uniquement des lettres. Vous devez v&eacute;rifier si la chaine de caract&egrave;res contient trois mots d'affil&eacute;e.
-    Par exemple, la chaine de caract&egrave;res "start 5 <strong>one two three</strong> 7 end" contient trois mots d'affil&eacute;e.
+    On vous donne une chaîne de mots et de chiffres séparés par des espaces (un espace).
+    Les mots ne contiennent que des lettres.
+    Vous devez vérifier si la chaîne contient trois mots <strong>successifs</strong>.
+    Par exemple, la chaîne "start 5 <strong>one two three</strong> 7 end" contient trois mots à la suite.
 </p>
 
 <p>
-    <strong>Entr&eacute;e : </strong> Une chaine de caract&egrave;res avec des mots.
+   <strong>Entrée:</strong> Une <span>chaîne de caractères</span> <span>(string)</span> contenant des mots.
 </p>
 
 <p>
-    <strong>Sortie : </strong> La r&eacute;ponse en tant que bool&eacute;en.
+   <strong>Sortie:</strong> La réponse sous forme de {% if is_js %}<span>booléen</span> <span>(boolean)</span>{% else %} bool{% endif %}.
 </p>
 
 
 
 <div class="for_info_only">
     <p>
-        <strong>Exemple :</strong>
+        <strong>Exemples:</strong>
     </p>
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 
 </div>
 
 <p class="for_info_only">
-    <strong>&Agrave; quoi cela sert : </strong>
-    Cela va vous apprendre &agrave; travailler avec des chaines de caract&egrave;res et introduit quelques fonctions pratiques.
+   <strong>Comment l'utiliser: </strong>
+    Ce cours vous apprend à travailler avec des chaînes de caractères et vous présente quelques fonctions utiles.
 </p>
 
 <p>
-    <strong>Pr&eacute;condition :</strong>
-    L'entr&eacute;e contient des mots et/ou des nombres. Il n'y a pas de mot mixte (lettres et chiffres m&eacute;lang&eacute;s).<br>
-    0 &lt; len(mots) &lt; 100
+   <strong>Condition préalable:</strong>
+    L'entrée contient des mots et/ou des chiffres. Il n'y a pas de mots mélangés (lettres et chiffres combinés).<br>
+    0 &lt; len(words) &lt; 100
 </p>
-
