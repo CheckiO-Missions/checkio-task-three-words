@@ -1,22 +1,22 @@
 <img class="for_info_only" title="train" src="{{MEDIA}}train.png" alt="train" />
 
 <p>
-    Nauczmy Roboty rozróżniać wyrazy i liczby.
+    Nauczmy roboty rozróżniać słowa i liczby.
 </p>
 
 <p>
-    Na wejściu jest napis z wyrazami i liczbami oddzielonymi spacjami (po jednej).
-    Wyrazy zawierają tylko litery.
-    Sprawdź czy napis zawiera trzy wyrazy <strong>obok siebie</strong> (nie oddzielone liczbami).
-    Na przykład napis "start 5 <strong>jeden dwa trzy</strong> 7 koniec" zawiera trzy wyrazy obok siebie.
+    Otrzymują Państwo ciąg znaków zawierający słowa i liczby oddzielone białymi znakami (jedna spacja).
+    Słowa zawierają tylko litery.
+    Proszę sprawdzić, czy ciąg zawiera trzy <strong>następujące po sobie</strong> słowa.
+    Na przykład ciąg "start 5 <strong>one two three</strong> 7 end" zawiera trzy następujące po sobie słowa.
 </p>
 
 <p>
-    <strong>Wejście: </strong> Napis z wyrazmi i liczbami.
+   <strong>Dane wejściowe:</strong> Ciąg znaków <span>{% if is_js %}(string){% else %}(str){% endif %}</span> ze słowami.
 </p>
 
 <p>
-    <strong>Wyjście: </strong> Odpowiedź jako wartość logiczna (boolean).
+   <strong>Wyjście:</strong> Wartość logiczna <span>{% if is_js %}(boolean){% else %}(bool){% endif %}</span>.
 </p>
 
 
@@ -30,13 +30,12 @@
 </div>
 
 <p class="for_info_only">
-    <strong>Korzyści: </strong>
-    To zadanie uczy Cię jak pracować z napisami i wprowadza użyteczne funkcje.
+   <strong>Jak jest używany:</strong>
+    To uczy, jak pracować z ciągami znaków i wprowadza kilka przydatnych funkcji.
 </p>
 
 <p>
-    <strong>Założenia:</strong>
-    Wejście zawiery wyrazy i/lub liczby. Nie ma mieszanych wyrazów (litery i liczby w jednym).<br>
-    
-    0 &lt; len(wyrazy) &lt; 100
+   <strong>Warunek wstępny:</strong>
+    Dane wejściowe zawierają słowa i/lub liczby. Nie ma mieszanych słów (liter i cyfr łącznie).<br>
+    0 &lt; len(words) &lt; 100
 </p>
