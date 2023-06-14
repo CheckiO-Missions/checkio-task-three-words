@@ -1,0 +1,197 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nie mam pojęcia, jak zacząć rozwiązywać tę misję
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 Ogólny pomysł polega na iterowaniu po podzielonym ciągu i liczeniu tylko słów
+        z literami.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Od jakiego instrumentu powinienem zacząć?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Musi Pan pobrać oddzielne słowa z ciągu, a następnie iterować po nich. Proszę użyć metody string <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a> do pierwszego zadania i <a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for statement</a> do utworzenia pętli.
+        </p>
+        <pre class="brush: python">
+for w in words.split():
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Potrzebuję pomocy, aby kontynuować misję.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Aby rozróżnić słowa i liczby, proszę użyć metod łańcuchowych <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a> i <a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a>. Dla tej misji wystarczy jedna metoda. Proszę użyć pierwszej z nich. Zwraca ona <b class="code">True</b> jeśli ciąg zawiera tylko litery. Proszę również użyć <a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a>.
+        </p>
+        <pre class="brush: python">
+if w.isalpha():
+    ...
+else:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Zniknąłem w połowie. Proszę o pomoc!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Proszę zadeklarować zmienną <b class="code">counter</b> z wartością początkową <b class="code">0</b> przed pętlą. Jeśli <b class="code">isalpha()</b> dla bieżącego słowa to <b class="code">True</b>, proszę zwiększyć <b class="code">counter</b>, jeśli <b class="code">False</b> - proszę zresetować licznik, ponieważ trzeba zliczać tylko słowa po kolei.
+        </p>
+        <pre class="brush: python">
+count = 0
+...
+if w.isalpha():
+    count += 1
+    ...
+else:
+    count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Utknąłem. Proszę o małą podpowiedź.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ musi Pan sprawdzać każde słowo, dopóki <b class="code">counter</b> nie osiągnie wartości <b class="code">3</b> lub nie pozostanie żadne słowo, proszę wykonać powyższe sprawdzenie wewnątrz pętli for.
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        ...
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Co robić dalej?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Jeśli Państwa <b class="code">counter</b> jest już równe <b class="code">3</b>, oznacza to, że w ciągu znajdują się trzy kolejne słowa i nie ma potrzeby kontynuowania liczenia - wystarczy zwrócić <b class="code">True</b>.
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        if count == 3:
+            return True
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+        </p>
+    </div>
+    <div class="answer"> 
+        <p>
+            jeśli nie pozostało żadne słowo do sprawdzenia (pętla się kończy), oznacza to, że ciąg nie zawiera trzech słów po kolei, więc proszę zwrócić <b class="code">False</b>. Proszę zawinąć cały kod w wyrażenie funkcyjne.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    count = 0
+    for w in words.split():
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+            
+    return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Proszę pokazać mi więcej rozwiązań!<br />
+            bo chcę być prawdziwym 🥇 Python Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Jasne, proszę łapać!
+        </p>
+        <p>
+            Używając modułu wyrażeń regularnych i wzorca wyszukiwania z trzema sekwencjami liter i białymi znakami między nimi.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(words: str) -> bool:
+
+    return bool(re.search('\D+ \D+ \D+', words))
+        </pre>
+        </div>
+        <p>
+            Proszę utworzyć trzy listy słów: pierwszą, drugą i trzecią. Następnie proszę je połączyć, połączyć każde trzy słowa w jedno bez spacji i sprawdzić, czy jest to słowo.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    d = words.split()
+
+    return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
+        </pre>
+        </div>
+        <p>
+            Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych
+        ciekawych rozwiązań!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            miło mi to słyszeć!
+        </p>
+    </div>
+</div>
+</body>
