@@ -5,7 +5,7 @@ requirejs(['ext_editor_io2', 'jquery_190'],
 
         var io = new extIO({
             animation: function($expl, data){
-                var checkioInput = data.in;
+                var checkioInput = data.in[0];
                 if (!checkioInput) {
                     return;
                 }
