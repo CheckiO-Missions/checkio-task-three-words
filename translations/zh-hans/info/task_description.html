@@ -1,0 +1,41 @@
+<img class="for_info_only" title="train" src="{{MEDIA}}train.png" alt="train" />
+
+<p>
+    让我们来教机器人区分文字和数字。
+</p>
+
+<p>
+    给你一个由单词和数字组成的字符串，用空格（一格）分隔。
+    字词中只包含字母。
+    你应该检查该字符串是否包含三个<strong>连续</strong>的单词。
+    例如，字符串 "start 5<strong>one two three</strong>7 end "包含三个连续的词。
+</p>
+
+<p>
+   <strong>输入：</strong>一个有 <span>{% if is_js %}(string){% else %}(str){% endif %}</span>含有单词。
+</p>
+
+<p>
+   <strong>输出：</strong>逻辑值 <span>{% if is_js %}(boolean){% else %}(bool){% endif %}</span>.
+</p>
+
+
+
+<div class="for_info_only">
+    <p>
+        <strong>举例说明：</strong>
+    </p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+</div>
+
+<p class="for_info_only">
+   <strong>它是如何被使用的：</strong>
+    教你如何处理字符串，并介绍了一些有用的函数。
+</p>
+
+<p>
+   <strong>前提条件：</strong>
+    输入包含单词和/或数字。没有混合词（字母和数字结合）。<br>
+    0 &lt; len(words) &lt; 100
+</p>
