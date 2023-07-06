@@ -1,0 +1,197 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不知道如何开始解决这个任务
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            一般的想法是在分割的字符串上进行迭代，只计算有字母的单词
+        有字母的字。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            那么，我应该从什么文书开始呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            你需要从字符串中获取单独的词，然后对它们进行迭代。在第一个任务中使用字符串<a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a> 方法，并使用<a target="_blank" href="https://www.w3schools.com/python/python_for_loops.asp">for statement</a> 来创建循环。
+        </p>
+        <pre class="brush: python">
+for w in words.split():
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我需要一些帮助来继续完成任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            为了区分文字和数字，请使用字符串方法<a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a> 和<a target="_blank" href="http://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a> 。对于这个任务，一个方法就足够了。让我们使用第一个方法。如果字符串只包含字母，它将返回<b class="code">True</b> 。还可以使用<a target="_blank" href="https://www.w3schools.com/python/gloss_python_if_statement.asp">if statement</a> 。
+        </p>
+        <pre class="brush: python">
+if w.isalpha():
+    ...
+else:
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我已经走了一半的路程。需要帮助!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            你需要在循环之前声明<b class="code">counter</b> 变量的初始值<b class="code">0</b> 。如果<b class="code">isalpha()</b> 当前的字是<b class="code">True</b> ，增加<b class="code">counter</b> ，如果<b class="code">False</b> - 你需要重置计数器，因为你需要只计算连续的字。
+        </p>
+        <pre class="brush: python">
+count = 0
+...
+if w.isalpha():
+    count += 1
+    ...
+else:
+    count = 0
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我被卡住了。我需要一个小提示。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           <b class="code">3</b> 因为你需要对每个字进行检查，直到<b class="code">counter</b> ，或者没有字了，就在for循环里做上述检查。
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        ...
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            接下来该怎么做？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            如果你的<b class="code">counter</b> 已经等于<b class="code">3</b> ，这意味着字符串中有三个连续的词，不需要继续计数 - 只需返回<b class="code">True</b> 。
+        </p>
+        <pre class="brush: python">
+count = 0
+for w in words.split():
+    if w.isalpha():
+        count += 1
+        if count == 3:
+            return True
+    else:
+        count = 0
+...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            那么，我的最终解决方案应该是什么样子的呢？
+        </p>
+    </div>
+    <div class="answer"> 
+        <p>
+            如果没有剩余的字需要检查（循环结束），这意味着该字符串没有连续的三个字，所以返回<b class="code">False</b> 。将整个代码包裹在函数表达式中。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    count = 0
+    for w in words.split():
+        if w.isalpha():
+            count += 1
+            if count == 3:
+                return True
+        else:
+            count = 0
+            
+    return False
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            告诉我更多的解决方案!<br />
+            因为我想成为一个真正的🥇 Python Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            当然，抓住它!
+        </p>
+        <p>
+            使用正则表达式模块，用三个字母序列和它们之间的空白来搜索模式。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def checkio(words: str) -> bool:
+
+    return bool(re.search('\D+ \D+ \D+', words))
+        </pre>
+        </div>
+        <p>
+            创建三个词的列表：从第一个、第二个和第三个。然后将它们组合在一起，将每三个词连接成一个没有空白的词，并检查它是否是一个词。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(words: str) -> bool:
+
+    d = words.split()
+
+    return any(''.join(values).isalpha() for values in zip(d, d[1:], d[2:]))
+        </pre>
+        </div>
+        <p>
+            点击任务菜单上的<b>Best Solutions</b> ，可以看到很多其他的
+        有趣的解决方案!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            谢谢!我现在知道并理解了更多!一切运作正常!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍很高兴听到这个消息!
+        </p>
+    </div>
+</div>
+</body>
